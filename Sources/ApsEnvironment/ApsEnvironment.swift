@@ -1,7 +1,7 @@
 import Foundation
 
-struct ApsEnvironment {
-    static func get() -> String? {
+public struct ApsEnvironment {
+    public static func get() -> String? {
         guard
             let filePath = Bundle.main.path(forResource: "embedded", ofType:"mobileprovision"),
             let data = try? Data(contentsOf: URL(fileURLWithPath: filePath)),
