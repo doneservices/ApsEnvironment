@@ -7,7 +7,8 @@ public struct ApsEnvironment {
             let data = try? Data(contentsOf: URL(fileURLWithPath: filePath)),
             let open = data.range(of: "<plist".data(using: .ascii)!),
             let close = data.range(of: "</plist>".data(using: .ascii)!, options: [], in: open.lowerBound..<data.endIndex),
-            let plist = try? PropertyListSerialization.propertyList(from: data[open.lowerBound..<close.upperBound], options: [], format: nil) as? [String: AnyObject],
+            let rawPlist = try? PropertyListSerialization.propertyList(from: data[open.lowerBound..<close.upperBound], options: [], format: nil),
+            let plist = rawPlist as? [String: AnyObject],
             let entitlements = plist["Entitlements"] as? [String: AnyObject],
             let environment = entitlements["aps-environment"] as? String else {
                 return nil
