@@ -12,6 +12,12 @@ dependencies: [
 ]
 ```
 
+or using Cocoapods:
+
+```ruby
+pod 'ApsEnvironment', '~> 1.0'
+```
+
 ## API
 
 ### `ApsEnvironment.get() -> String?`
